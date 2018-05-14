@@ -2,10 +2,10 @@ const database = require("./database-connection")
 
 module.exports = {
     list() {
-        return database.select("*").from('crops')
+        return database.select("*").from('messages')
     },
     listPeople() {
-        return database.select("*").from('soils')
+        return database.select("*").from('numbers')
     },
     read(id, table) {
         return database.select("*").from(table).where("id", id).first()

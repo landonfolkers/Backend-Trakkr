@@ -1,7 +1,7 @@
 exports.up = function (knex, Promise) {
     return knex.schema.createTable('numbers', table => {
-        table.increments('id').primary().
-        table.text('identity').references('messages.identity')
+        table.increments('id').primary().references('messages.id')
+        table.text('identity')
         table.text('number1')
         table.text('number2')
         table.text('number3')
