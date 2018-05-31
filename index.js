@@ -33,10 +33,10 @@ app.get("/messages", (request, response) => {
     }).catch(console.error)
 })
 
-app.get("/messages/:id", (request, response) => {
-    queries.read(request.params.id, 'messages').then(crop => {
-        crop
-            ? response.json({ crop })
+app.get("/messages/:identity", (request, response) => {
+    queries.read(request.params.identity, 'messages').then(message => {
+        message
+            ? response.json({ message })
             : response.sendStatus(404)
     }).catch(console.error)
 })
@@ -54,8 +54,8 @@ app.delete("/messages/:id", (request, response) => {
     }).catch(error => {console.error(error)})
 })
 
-app.put("/messages/:id", (request, response) => {
-    queries.update(request.params.id, 'messages', request.body).then(message => {
+app.put("/messages/:identity", (request, response) => {
+    queries.update(request.params.identity, 'messages', request.body).then(message => {
         response.json({ message })
     }).catch(console.error)
 })
@@ -66,9 +66,9 @@ app.get("/numbers", (request, response) => {
     }).catch(console.error)
 })
 
-app.get("/numbers/:id", (request, response) => {
-    queries.read(request.params.id, 'numbers').then(number => {
-        crop
+app.get("/numbers/:identity", (request, response) => {
+    queries.read(request.params.identity, 'numbers').then(number => {
+        number
             ? response.json({ number })
             : response.sendStatus(404)
     }).catch(console.error)
@@ -86,8 +86,8 @@ app.delete("/numbers/:id", (request, response) => {
     }).catch(console.error)
 })
 
-app.put("/numbers/:id", (request, response) => {
-    queries.update(request.params.id, 'numbers', request.body).then(number => {
+app.put("/numbers/:identity", (request, response) => {
+    queries.update(request.params.identity, 'numbers', request.body).then(number => {
         response.json({ number })
     }).catch(console.error)
 })

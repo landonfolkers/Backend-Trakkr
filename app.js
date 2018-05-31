@@ -33,10 +33,10 @@ app.get("/messages", (request, response) => {
     }).catch(console.error)
 })
 
-app.get("/messages/:id", (request, response) => {
-    queries.read(request.params.id, 'messages').then(crop => {
-        crop
-            ? response.json({ crop })
+app.get("/messages/identity", (request, response) => {
+    queries.read(request.params.identity, 'messages').then(message => {
+        message
+            ? response.json({ message })
             : response.sendStatus(404)
     }).catch(console.error)
 })
@@ -61,7 +61,7 @@ app.put("/messages/:id", (request, response) => {
 })
 
 app.get("/numbers", (request, response) => {
-    queries.list2().then(number => {
+    queries.listPeople().then(number => {
         response.json({ number })
     }).catch(console.error)
 })

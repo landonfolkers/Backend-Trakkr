@@ -7,15 +7,15 @@ module.exports = {
     listPeople() {
         return database.select("*").from('numbers')
     },
-    read(id, table) {
-        return database.select("*").from(table).where("id", id).first()
+    read(identity, table) {
+        return database.select("*").from(table).where("identity", identity)
     },
     create(table, item) {
         return database(table).insert(item, "*")
             .then(record => record[0])
     },
-    update(id, table, item) {
-        return database(table).where("id", id).update(item, "*")
+    update(identity, table, item) {
+        return database(table).where("identity", identity).update(item, "*")
             .then(record => record[0])
     },
     delete(id, table) {
